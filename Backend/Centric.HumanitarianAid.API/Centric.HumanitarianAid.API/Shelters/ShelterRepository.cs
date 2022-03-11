@@ -1,4 +1,4 @@
-﻿namespace Centric.HumanitarianAid.API.Database
+﻿namespace Centric.HumanitarianAid.API.Shelters
 {
     public class ShelterRepository
     {
