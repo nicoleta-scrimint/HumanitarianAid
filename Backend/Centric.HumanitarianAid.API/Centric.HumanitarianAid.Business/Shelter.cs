@@ -2,8 +2,6 @@
 {
     public class Shelter
     {
-        private const int MaxNumberOfPlaces = 300;
-
         public Guid Id { get; private set; }
 
         public string Name { get; private set; }
@@ -24,9 +22,10 @@
 
         public static Result<Shelter> CreateShelter(string name, string address, int numberOfPlaces, string ownerName, string ownerEmail, string ownerPhone)
         {
-            if (numberOfPlaces > MaxNumberOfPlaces)
+            var minimumNumberOfPlaces = 0;
+            if (numberOfPlaces <= 0)
             {
-                return Result<Shelter>.Failure($"The provided number of places '{numberOfPlaces}' is greater than the maximum number of places '{MaxNumberOfPlaces}'.");
+                return Result<Shelter>.Failure($"The number of places for the shelter needs to be greater than {minimumNumberOfPlaces}.");
             }
 
             var shelter = new Shelter
@@ -51,7 +50,7 @@
                 return Result.Failure("Add at least a person to the shelter.");
             }
 
-            if (persons.Count > NumberOfPlaces)
+            if (persons.Count > GetAvailableNumberOfPlaces())
             {
                 return Result.Failure($"The newly added persons number '{persons.Count}' exceed the available number of places: '{GetAvailableNumberOfPlaces()}'");
             }
