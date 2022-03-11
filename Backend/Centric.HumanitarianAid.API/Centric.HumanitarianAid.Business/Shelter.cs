@@ -20,7 +20,7 @@
 
         public List<Person> Persons { get; private set; }
 
-        public static Result<Shelter> RegisterShelter(string name, string address, int numberOfPlaces, string ownerName, string ownerEmail, string ownerPhone)
+        public static Result<Shelter> CreateShelter(string name, string address, int numberOfPlaces, string ownerName, string ownerEmail, string ownerPhone)
         {
             var minimumNumberOfPlaces = 0;
             if (numberOfPlaces <= 0)
