@@ -1,4 +1,6 @@
-﻿namespace Centric.HumanitarianAid.Business
+﻿using System.Text.Json.Serialization;
+
+namespace Centric.HumanitarianAid.Business
 {
     public class Person
     {
@@ -14,7 +16,8 @@
 
         public Guid ShelterId { get; private set; }
 
-        public Shelter Shelter { get; set; }
+        [JsonIgnore]
+        public Shelter Shelter { get; set; } // probably is not needed at all.
 
         public static Result<Person> CreatePerson(string name, string surname, int age, string gender)
         {
