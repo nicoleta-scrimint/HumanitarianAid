@@ -23,8 +23,7 @@ namespace Centric.HumanitarianAid.Business
         {
             if (!Enum.TryParse<PersonGender>(gender, out var personGender))
             {
-                var expectedGenderValues = Enum.GetValues(typeof(PersonGender)).Cast<string>();
-                var textExpectedGenderValues = string.Join<string>(",", expectedGenderValues);
+                var textExpectedGenderValues = string.Join(",", Enum.GetNames(typeof(PersonGender)));
                 return Result<Person>.Failure($"The person gender can be one from the values '{textExpectedGenderValues}'.");
             }
 
