@@ -1,5 +1,4 @@
-﻿using Centric.HumanitarianAid.API.Shelters;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Centric.HumanitarianAid.API.Person
 {
@@ -7,19 +6,19 @@ namespace Centric.HumanitarianAid.API.Person
     [ApiController]
     public class PersonsController : ControllerBase
     {
-        private readonly ShelterRepository _shelterRepository;
+        private readonly PersonRepository _personRepository;
 
-        public PersonsController(ShelterRepository shelterRepository)
-        {
-            _shelterRepository = shelterRepository;
-        }
+		public PersonsController(PersonRepository personRepository)
+		{
+			_personRepository = personRepository;
+		}
 
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Get()
-        {
-            return Ok(_shelterRepository.GetAllPersons());
-        }
-    }
+		[HttpGet]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		public IActionResult Get()
+		{
+			//return Ok(_personRepository.GetAll());
+			return Ok();
+		}
+	}
 }

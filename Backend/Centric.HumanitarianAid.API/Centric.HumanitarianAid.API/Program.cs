@@ -1,3 +1,4 @@
+using Centric.HumanitarianAid.API.Person;
 using Centric.HumanitarianAid.API.Shelters;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<ShelterRepository>();
+builder.Services
+    .AddScoped<ShelterRepository>()
+    .AddScoped<PersonRepository>();
 
 var app = builder.Build();
 

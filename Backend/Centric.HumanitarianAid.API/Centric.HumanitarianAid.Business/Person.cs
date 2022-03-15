@@ -16,9 +16,6 @@ namespace Centric.HumanitarianAid.Business
 
         public Guid ShelterId { get; private set; }
 
-        [JsonIgnore]
-        public Shelter Shelter { get; set; } // probably is not needed at all.
-
         public static Result<Person> CreatePerson(string name, string surname, int age, string gender)
         {
             if (!Enum.TryParse<PersonGender>(gender, out var personGender))
@@ -40,7 +37,6 @@ namespace Centric.HumanitarianAid.Business
 
         public void RegisterPersonToShelter(Shelter shelter)
         {
-            Shelter = shelter;
             ShelterId = shelter.Id;
         }
     }

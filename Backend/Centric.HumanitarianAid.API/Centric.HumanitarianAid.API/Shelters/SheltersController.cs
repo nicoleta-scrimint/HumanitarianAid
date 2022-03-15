@@ -1,3 +1,4 @@
+using Centric.HumanitarianAid.Business;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Centric.HumanitarianAid.API.Shelters
@@ -6,17 +7,12 @@ namespace Centric.HumanitarianAid.API.Shelters
     [Route("api/[controller]")]
     public class SheltersController : ControllerBase
     {
-        private readonly ShelterRepository _shelterRepository;
-
-        public SheltersController(ShelterRepository shelterRepository)
-        {
-            _shelterRepository = shelterRepository;
-		}
+        private static List<Shelter> _shelters = new();
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Create([FromBody] ShelterDto sheltorDto)
+        public IActionResult Create([FromBody] CreateShelterDto sheltorDto)
         {
             var shelter = Business.Shelter.CreateShelter(
                 sheltorDto.Name, 
@@ -28,7 +24,7 @@ namespace Centric.HumanitarianAid.API.Shelters
 
             if (shelter.IsSuccess) 
             {
-                _shelterRepository.Add(shelter.Entity);
+                _shelters.Add(shelter.Entity);
                 return Created(nameof(Get), shelter);
             }
 
@@ -48,7 +44,7 @@ namespace Centric.HumanitarianAid.API.Shelters
                 return BadRequest(string.Join(";", persons.Select(p => p.Error)));
             }
 
-            var shelter = _shelterRepository.GetById(shelterId);
+            var shelter = _shelters.FirstOrDefault(s => s.Id == shelterId);
 
             if (shelter == null)
             {
@@ -64,7 +60,19 @@ namespace Centric.HumanitarianAid.API.Shelters
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult Get()
         {
-            return Ok(_shelterRepository.GetAll());
+            var shelters = _shelters.Select(s => new ShelterDto
+            {
+                Id = s.Id, 
+                Address = s.Address,
+                Name = s.Name,
+                NumberOfPlaces = s.NumberOfPlaces,
+                OwnerEmail = s.OwnerEmail,
+                OwnerName = s.OwnerName,
+                OwnerPhone = s.OwnerPhone,
+                RegistrationDateTime = s.RegistrationDateTime
+            });
+
+            return Ok(shelters);
         }
     }
 }
