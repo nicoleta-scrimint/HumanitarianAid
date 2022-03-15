@@ -2,28 +2,40 @@
 
 namespace Centric.HumanitarianAid.API.Shelters
 {
+    using Data;
+    using Microsoft.EntityFrameworkCore;
+
     public class ShelterRepository
     {
-        private static List<Shelter> _shelters = new List<Shelter>();
+        private readonly DatabaseContext databaseContext;
+
+        public ShelterRepository(DatabaseContext databaseContext)
+        {
+            this.databaseContext = databaseContext;
+        }
 
         public void Add(Shelter shelter)
         {
-            _shelters.Add(shelter);
+            this.databaseContext.Set<Shelter>().Add(shelter);
+            this.databaseContext.SaveChanges();
         }
 
-        public Shelter GetById(Guid id) 
+        public Shelter GetById(Guid id)
         {
-            return _shelters.FirstOrDefault(s => s.Id == id);
+            return this.databaseContext.Set<Shelter>()
+                .Include(x => x.Persons)
+                .SingleOrDefault(x => x.Id == id);
         }
 
-        public IEnumerable<Shelter> GetAll() 
+        public IEnumerable<Shelter> GetAll()
         {
-            return _shelters;
+            return this.databaseContext.Set<Shelter>()
+                .Include(x => x.Persons);
         }
 
-        public IEnumerable<Business.Person> GetAllPersons() 
+        public void Save()
         {
-            return _shelters.SelectMany(s=> s.Persons);
-		}
+            this.databaseContext.SaveChanges();
+        }
     }
 }

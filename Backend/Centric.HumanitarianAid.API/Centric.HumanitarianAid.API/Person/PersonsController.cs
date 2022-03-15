@@ -17,8 +17,7 @@ namespace Centric.HumanitarianAid.API.Person
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		public IActionResult Get()
 		{
-			//return Ok(_personRepository.GetAll());
-			return Ok();
+			return Ok(_personRepository.GetAll());
 		}
 	}
 }

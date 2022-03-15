@@ -1,9 +1,12 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Centric.HumanitarianAid.Business
+﻿namespace Centric.HumanitarianAid.Business
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class Person
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; private set; }
 
         public string Name { get; private set; }
@@ -14,7 +17,7 @@ namespace Centric.HumanitarianAid.Business
 
         public PersonGender Gender { get; private set; }
 
-        public Guid ShelterId { get; private set; }
+        public Guid? ShelterId { get; private set; }
 
         public static Result<Person> CreatePerson(string name, string surname, int age, string gender)
         {
@@ -30,7 +33,8 @@ namespace Centric.HumanitarianAid.Business
                 Name = name,
                 Surname = surname,
                 Age = age,
-                Gender = personGender
+                Gender = personGender,
+                ShelterId = null
             };
             return Result<Person>.Success(person);
         }
