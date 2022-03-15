@@ -1,7 +1,12 @@
 ﻿namespace Centric.HumanitarianAid.Business
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class Shelter
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; private set; }
 
         public string Name { get; private set; }
