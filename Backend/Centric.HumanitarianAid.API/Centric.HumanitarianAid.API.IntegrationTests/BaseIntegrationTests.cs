@@ -14,11 +14,11 @@ public class BaseIntegrationTests
 
     protected BaseIntegrationTests()
     {
-        CleanupDatabase();
-
         var application = new WebApplicationFactory<SheltersController>()
             .WithWebHostBuilder(builder => { });
         HttpClient = application.CreateClient();
+
+        CleanupDatabase();
     }
 
     private void CleanupDatabase()
