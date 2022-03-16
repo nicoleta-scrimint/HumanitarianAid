@@ -33,8 +33,22 @@ namespace Centric.HumanitarianAid.API.Shelters
 
             if (shelter.IsSuccess) 
             {
-                _shelterRepository.Add(shelter.Entity);
-                return Created(nameof(Get), shelter);
+                _shelterRepository.Add(shelter.Entity); 
+
+                var entity = shelter.Entity;
+                var shelterDto = new ShelterDto
+                {
+                    Id = entity.Id,
+                    Address = entity.Address,
+                    Name = entity.Name,
+                    OwnerEmail = entity.OwnerEmail,
+                    OwnerName = entity.OwnerName,
+                    OwnerPhone = entity.OwnerPhone,
+                    RegistrationDateTime = entity.RegistrationDateTime,
+                    RemainingNumberOfPlaces = entity.NumberOfPlaces
+                };
+
+                return Created(nameof(Get), shelterDto);
             }
 
             return BadRequest(shelter.Error);
