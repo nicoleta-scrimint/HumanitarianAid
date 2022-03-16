@@ -1,4 +1,4 @@
-using Centric.HumanitarianAid.API.Person;
+using Centric.HumanitarianAid.API.Persons;
 using Centric.HumanitarianAid.API.Shelters;
 
 var builder = WebApplication.CreateBuilder(args);

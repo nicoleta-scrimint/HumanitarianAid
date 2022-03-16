@@ -1,3 +1,4 @@
+using Centric.HumanitarianAid.API.Persons;
 using Centric.HumanitarianAid.Business;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +15,7 @@ namespace Centric.HumanitarianAid.API.Shelters
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Create([FromBody] CreateShelterDto sheltorDto)
         {
-            var shelter = Business.Shelter.CreateShelter(
+            var shelter = Shelter.CreateShelter(
                 sheltorDto.Name, 
                 sheltorDto.Address, 
                 sheltorDto.NumberOfPlaces, 
@@ -25,7 +26,21 @@ namespace Centric.HumanitarianAid.API.Shelters
             if (shelter.IsSuccess) 
             {
                 _shelters.Add(shelter.Entity);
-                return Created(nameof(Get), shelter);
+
+                var entity = shelter.Entity;
+                var shelterDto = new ShelterDto
+                {
+                    Id = entity.Id,
+                    Address = entity.Address,
+                    Name = entity.Name,
+                    OwnerEmail = entity.OwnerEmail,
+                    OwnerName = entity.OwnerName,
+                    OwnerPhone = entity.OwnerPhone,
+                    RegistrationDateTime = entity.RegistrationDateTime,
+                    RemainingNumberOfPlaces = entity.NumberOfPlaces
+                };
+
+                return Created(nameof(Get), shelterDto);
             }
 
             return BadRequest(shelter.Error);

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Centric.HumanitarianAid.API.Person
+namespace Centric.HumanitarianAid.API.Persons
 {
     [Route("api/[controller]")]
     [ApiController]

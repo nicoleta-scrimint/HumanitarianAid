@@ -1,4 +1,4 @@
-﻿namespace Centric.HumanitarianAid.API
+﻿namespace Centric.HumanitarianAid.API.Persons
 {
 	public class PersonDto
 	{
