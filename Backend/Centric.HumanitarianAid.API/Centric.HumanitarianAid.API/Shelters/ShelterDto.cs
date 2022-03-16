@@ -8,7 +8,7 @@
 
         public string Address { get; set; }
 
-        public int NumberOfPlaces { get; set; }
+        public int RemainingNumberOfPlaces { get; set; }
 
         public string OwnerName { get; set; }
 

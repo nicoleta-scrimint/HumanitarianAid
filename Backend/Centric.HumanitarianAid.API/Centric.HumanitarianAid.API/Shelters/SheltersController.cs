@@ -65,7 +65,7 @@ namespace Centric.HumanitarianAid.API.Shelters
                 Id = s.Id, 
                 Address = s.Address,
                 Name = s.Name,
-                NumberOfPlaces = s.NumberOfPlaces,
+                RemainingNumberOfPlaces = s.GetAvailableNumberOfPlaces(),
                 OwnerEmail = s.OwnerEmail,
                 OwnerName = s.OwnerName,
                 OwnerPhone = s.OwnerPhone,
