@@ -30,7 +30,8 @@ namespace Centric.HumanitarianAid.API.Shelters
         public IEnumerable<Shelter> GetAll()
         {
             return this.databaseContext.Set<Shelter>()
-                .Include(x => x.Persons);
+                .Include(x => x.Persons)
+                .ToList();
         }
 
         public void Save()

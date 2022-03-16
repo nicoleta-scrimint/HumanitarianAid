@@ -1,9 +1,8 @@
-using Microsoft.AspNetCore.Mvc;
-
 namespace Centric.HumanitarianAid.API.Shelters
 {
     using Business;
-    using Person;
+    using Persons;
+    using Microsoft.AspNetCore.Mvc;
 
     [ApiController]
     [Route("api/[controller]")]
@@ -24,7 +23,7 @@ namespace Centric.HumanitarianAid.API.Shelters
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Create([FromBody] CreateShelterDto sheltorDto)
         {
-            var shelter = Business.Shelter.CreateShelter(
+            var shelter = Shelter.CreateShelter(
                 sheltorDto.Name, 
                 sheltorDto.Address, 
                 sheltorDto.NumberOfPlaces, 
@@ -56,8 +55,6 @@ namespace Centric.HumanitarianAid.API.Shelters
                 return BadRequest(string.Join(";", persons.Select(p => p.Error)));
             }
 
-            persons.ForEach(x => _personRepository.Add(x.Entity));
-
             var shelter = _shelterRepository.GetById(shelterId);
 
             if (shelter == null)
@@ -67,6 +64,7 @@ namespace Centric.HumanitarianAid.API.Shelters
 
             var result = shelter.RegisterFamilyToShelter(persons.Select(s => s.Entity).ToList());
 
+            persons.ForEach(x => _personRepository.Add(x.Entity));
             _shelterRepository.Save();
 
             return result.IsSuccess ? NoContent() : BadRequest(result.Error);
@@ -76,7 +74,20 @@ namespace Centric.HumanitarianAid.API.Shelters
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult Get()
         {
-            return Ok(_shelterRepository.GetAll());
+            var shelters = _shelterRepository.GetAll()
+                .Select(x => new ShelterDto
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Address = x.Address,
+                    RemainingNumberOfPlaces = x.GetAvailableNumberOfPlaces(),
+                    OwnerName = x.OwnerName,
+                    OwnerEmail = x.OwnerEmail,
+                    OwnerPhone = x.OwnerPhone,
+                    RegistrationDateTime = x.RegistrationDateTime
+                });
+
+            return Ok(shelters);
         }
     }
 }

@@ -17,7 +17,16 @@ namespace Centric.HumanitarianAid.API.Persons
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		public IActionResult Get()
 		{
-			return Ok(_personRepository.GetAll());
-		}
+			var persons = _personRepository.GetAll()
+                .Select(x => new PersonDto
+                {
+                    Name = x.Name,
+                    Surname = x.Surname,
+                    Age = x.Age,
+                    Gender = x.Gender.ToString()        
+                });
+
+            return Ok(persons);
+        }
 	}
 }
