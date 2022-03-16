@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Centric.HumanitarianAid.Business\Centric.HumanitarianAid.Business.csproj" />
+    <ProjectReference Include="..\Centric.HumanitarianAid.Business\HumanitarianAid.Business.csproj" />
   </ItemGroup>
 
 </Project>
