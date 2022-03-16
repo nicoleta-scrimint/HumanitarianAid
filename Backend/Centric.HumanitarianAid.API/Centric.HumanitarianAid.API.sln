@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Centric.HumanitarianAid.API", "Centric.HumanitarianAid.API\Centric.HumanitarianAid.API.csproj", "{BF0A3750-8190-43FE-AF80-4C0B541E9E03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HumanitarianAid.API", "Centric.HumanitarianAid.API\HumanitarianAid.API.csproj", "{BF0A3750-8190-43FE-AF80-4C0B541E9E03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Centric.HumanitarianAid.Business", "Centric.HumanitarianAid.Business\Centric.HumanitarianAid.Business.csproj", "{54AD1450-CEF4-45FC-A9C8-BB7EA6496506}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HumanitarianAid.Business", "Centric.HumanitarianAid.Business\HumanitarianAid.Business.csproj", "{54AD1450-CEF4-45FC-A9C8-BB7EA6496506}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Centric.HumanitarianAid.Business.UnitTests", "Centric.HumanitarianAid.Business.UnitTests\Centric.HumanitarianAid.Business.UnitTests.csproj", "{EE612720-617B-42FD-9E86-D7D3FBADBE2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HumanitarianAid.Business.UnitTests", "Centric.HumanitarianAid.Business.UnitTests\HumanitarianAid.Business.UnitTests.csproj", "{EE612720-617B-42FD-9E86-D7D3FBADBE2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Centric.HumanitarianAid.API.IntegrationTests", "Centric.HumanitarianAid.API.IntegrationTests\Centric.HumanitarianAid.API.IntegrationTests.csproj", "{A3D3C722-C1B2-4484-9575-51BE58984831}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HumanitarianAid.API.IntegrationTests", "Centric.HumanitarianAid.API.IntegrationTests\HumanitarianAid.API.IntegrationTests.csproj", "{A3D3C722-C1B2-4484-9575-51BE58984831}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

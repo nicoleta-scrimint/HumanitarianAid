@@ -1,3 +1,7 @@
+using Centric.HumanitarianAid.API.Data;
+using Centric.HumanitarianAid.API.Person;
+using Centric.HumanitarianAid.API.Shelters;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<ShelterRepository>();
+builder.Services.AddScoped<PersonRepository>();
+builder.Services.AddScoped<DatabaseContext>();
 
 var app = builder.Build();
 
