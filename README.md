@@ -20,11 +20,11 @@
   * Facem override la metoda *OnConfiguring* si setam link-ul de conexiune la baza de date: *"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=[AbsoluteFolderPath]\\SHELTER.MDF;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"*
   * In clasele Shelter si Person, setam atributele pentru cheile primare: *[Key]* si *[DatabaseGenerated(DatabaseGeneratedOption.Identity)]*
   
-  ## 4.Adaugam prima migrare la baza de date:
+  ## 4.Dacă nu este deja facuta automat (din constructorul de DatabaseContext), adaugam prima migrare la baza de date astfel:
  * Deschidem Package Manager Console (*Tools -> Nuget Package Manager -> Package Manager Console*)
  * Rulam Add-Migration Init, sau orice alt nume pentru migrare, dar trebuie sa fie sugestiv (ne asiguram ca proiectul Centric.HumanitarianAid.API este setat ca Start up project) 
  * Rulam Update-Database.
-Apoi verificam in Sql Server Object Explorer ca baza de date s-a creat cu success.
+Apoi verificam in Sql Server Object Explorer/Server Explorer ca baza de date s-a creat cu success.
   
   ## 5.Creare repository
  * In constructorul clasei ShelterRepository injectam DatabaseContext
