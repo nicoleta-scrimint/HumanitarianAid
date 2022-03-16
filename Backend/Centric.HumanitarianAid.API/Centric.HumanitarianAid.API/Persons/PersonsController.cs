@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Centric.HumanitarianAid.API.Person
+namespace Centric.HumanitarianAid.API.Persons
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -17,7 +17,16 @@ namespace Centric.HumanitarianAid.API.Person
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		public IActionResult Get()
 		{
-			return Ok(_personRepository.GetAll());
-		}
+			var persons = _personRepository.GetAll()
+                .Select(x => new PersonDto
+                {
+                    Name = x.Name,
+                    Surname = x.Surname,
+                    Age = x.Age,
+                    Gender = x.Gender.ToString()        
+                });
+
+            return Ok(persons);
+        }
 	}
 }

@@ -17,7 +17,7 @@
 
         public PersonGender Gender { get; private set; }
 
-        public Guid? ShelterId { get; private set; }
+        public Guid ShelterId { get; private set; }
 
         public static Result<Person> CreatePerson(string name, string surname, int age, string gender)
         {
@@ -34,8 +34,7 @@
                 Name = name,
                 Surname = surname,
                 Age = age,
-                Gender = personGender,
-                ShelterId = null
+                Gender = personGender
             };
             return Result<Person>.Success(person);
         }
