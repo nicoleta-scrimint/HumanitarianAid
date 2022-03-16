@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Centric.HumanitarianAid.API.Data;
+using Centric.HumanitarianAid.API.Persons;
 using Centric.HumanitarianAid.API.Shelters;
 using Centric.HumanitarianAid.Business;
 using FluentAssertions;
