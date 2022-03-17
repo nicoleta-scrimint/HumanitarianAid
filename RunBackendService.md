@@ -2,3 +2,7 @@
 - open a powershell window in this location
 - execute the powershell script like: .\RunHumanitarianAidWebApiService.ps1
 - if an error for execution policy occurs, run command to bypass execution policy "Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass" and choose Y and after run the upper powershell
+- wait for the backend service URL-s which can be like "https://localhost:7254/" and "http://localhost:5254"
+- copy the http or https URL to the browser and concatenate the swagger URL part, thus you could have the url "https://localhost:7254/swagger" for the https endpoint
+- press Ctrl C in the powershell to shut down the backend web service application
+- after the backend web service application is shut down, the current location remains the location of the web service. In order to run again the powershell to start the web service application, you need to start from step 1 from this document
