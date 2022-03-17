@@ -2,17 +2,17 @@ Technical prerequisites for running the backend service application:
 - .Net SDK 6
 	- Not needed if Visual Studio 2022 is already installed
 	- Can be downloaded and installed from https://dotnet.microsoft.com/en-us/download/dotnet/6.0
-		- ![](.//RunBackendServiceHelpImages/InstallDotNetSdk6.png)
+		- ![](.//RunBackendServiceHelpImages/InstallDotNetSdk6.png?raw=true)
 - SQL Server Express 2019 LocalDB
 	- If Visual Studio 2022 is installed:
 		- From Visual Studio, go to menu item Tools > Get Tools and Features…
-			- ![](.//RunBackendServiceHelpImages/OpenToolsAndFeaturesFromVisualStudio.png)
+			- ![](.//RunBackendServiceHelpImages/OpenToolsAndFeaturesFromVisualStudio.png?raw=true)
 		- Go to “Individual components” tab
 		- Search for LocalDb and from the search results, select “SQL Server Express 2019 LocalDB”. If it is already selected, this means that the LocalDb is already installed and the following step does not need to be executed
 		- Click Modify, the button from the bottom right of the screen
 	- If Visual Studio 2022 is not installed:
 		- Based on this documentation, https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb?view=sql-server-ver15, LocalDB is a feature you select during SQL Server Express installation, and is available when you download the media. If you download the media, either choose Express Advanced or the LocalDB package
-			- ![](.//RunBackendServiceHelpImages/InstallLocalDbThroughSqlExpress.png)
+			- ![](.//RunBackendServiceHelpImages/InstallLocalDbThroughSqlExpress.png?raw=true)
 
 Steps to run the backend service application:
 - go to the root location of the GIT repository "GitRepositoryParentPath\HumanitarianAid"
