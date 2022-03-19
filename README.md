@@ -5,6 +5,7 @@
 ## Unit tests
 * Right click project Centric.HumanitarianAid.Business.UnitTests, Manage NuGet Packages, find and search FluentAssertions
 * Write the unit tests in the ShelterTests for the Shelter business model
+* Use the method name convention When_StateUnderTest_Then_ShouldHaveExpectedResult
 
 ## Integration tests
 * Right click project HumanitarianAid.API.IntegrationTests, Manage NuGet Packages, find and search the NuGet packages
