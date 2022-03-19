@@ -1,4 +1,6 @@
-# Step 1 - Business models
+# HumanitarianAid
+
+**Step 1 - Business models **
 
 As a coordinator of a humanitarian organization, I would like to register a shelter for helping persons in need.
 The shelter maintains the following data: name, address, number of places, owner with name and contact info: email, phone.
