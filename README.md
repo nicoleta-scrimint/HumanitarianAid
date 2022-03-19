@@ -8,4 +8,4 @@ I would like to filter at a later time the shelters based on the registration da
 - Create Shelter class with required properties
 - Add a new method Create for the register functionality
 - Set the registration date of the shelter
-- Return error from the Create method when the number of places is not greater than 0
+- Return error from the Create method when the number of places is not greater than 0 by using a Result class, which needs to be created
