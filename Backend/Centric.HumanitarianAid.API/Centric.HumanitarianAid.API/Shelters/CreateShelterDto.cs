@@ -1,4 +1,4 @@
-﻿namespace Centric.HumanitarianAid.API.Shelters
+﻿namespace HumanitarianAid.API.Shelters
 {
 	public class CreateShelterDto
 	{

@@ -1,6 +1,6 @@
 using Centric.HumanitarianAid.API.Data;
 using Centric.HumanitarianAid.API.Persons;
-using Centric.HumanitarianAid.API.Shelters;
+using HumanitarianAid.API.Shelters;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

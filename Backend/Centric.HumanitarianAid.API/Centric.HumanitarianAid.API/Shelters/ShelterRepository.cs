@@ -1,42 +1,55 @@
-﻿using Centric.HumanitarianAid.Business;
+﻿using Centric.HumanitarianAid.API.Data;
+using Centric.HumanitarianAid.Business;
+using Microsoft.EntityFrameworkCore;
 
-namespace Centric.HumanitarianAid.API.Shelters
-{
-    using Data;
-    using Microsoft.EntityFrameworkCore;
+namespace HumanitarianAid.API.Shelters;
 
     public class ShelterRepository
     {
-        private readonly DatabaseContext databaseContext;
+        private readonly DatabaseContext _databaseContext;
+
+        private DbSet<Shelter> Table => _databaseContext.Set<Shelter>();
 
         public ShelterRepository(DatabaseContext databaseContext)
         {
-            this.databaseContext = databaseContext;
+            _databaseContext = databaseContext;
         }
 
         public void Add(Shelter shelter)
         {
-            this.databaseContext.Set<Shelter>().Add(shelter);
-            this.databaseContext.SaveChanges();
+            Table.Add(shelter);
+            Save();
         }
 
         public Shelter GetById(Guid id)
         {
-            return this.databaseContext.Set<Shelter>()
+            return Table
                 .Include(x => x.Persons)
                 .SingleOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<Shelter> GetAll()
         {
-            return this.databaseContext.Set<Shelter>()
+            return Table
                 .Include(x => x.Persons)
                 .ToList();
         }
 
+        public void Delete(Shelter shelter)
+        {
+            shelter.Persons.Clear();
+            Table.Remove(shelter);
+            Save();
+        }
+
+        public void Update(Shelter shelter)
+        {
+            Table.Update(shelter);
+            Save();
+        }
+
         public void Save()
         {
-            this.databaseContext.SaveChanges();
+            _databaseContext.SaveChanges();
         }
     }
-}

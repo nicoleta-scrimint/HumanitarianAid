@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Net.Http;
 using Centric.HumanitarianAid.API.Data;
-using Centric.HumanitarianAid.API.Shelters;
+using HumanitarianAid.API.Shelters;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;
 
