@@ -12,8 +12,6 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { RouterModule } from '@angular/router';
 
-
-
 const materialImports = [
   MatToolbarModule,
   MatIconModule,

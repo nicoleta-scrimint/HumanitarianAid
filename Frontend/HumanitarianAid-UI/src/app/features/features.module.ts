@@ -5,11 +5,9 @@ import { SheltersComponent } from './shelters/shelters.component';
 import { PersonsComponent } from './persons/persons.component';
 import { ContactComponent } from './contact/contact.component';
 
-const components = [SheltersComponent, PersonsComponent, ContactComponent];
-
 @NgModule({
-  declarations: [components],
+  declarations: [SheltersComponent, PersonsComponent, ContactComponent],
   imports: [CommonModule],
-  exports: [components],
+  exports: [SheltersComponent, PersonsComponent, ContactComponent],
 })
 export class FeaturesModule {}
