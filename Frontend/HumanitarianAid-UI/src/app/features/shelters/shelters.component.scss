@@ -1,0 +1,26 @@
+.title-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .title {
+    margin-top: 0;
+  }
+
+  .title-buttons {
+    button:not(:last-of-type) {
+      margin-right: 10px;
+    }
+  }
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  & > *:not(:last-child) {
+    margin-right: 10px;
+  }
+}
