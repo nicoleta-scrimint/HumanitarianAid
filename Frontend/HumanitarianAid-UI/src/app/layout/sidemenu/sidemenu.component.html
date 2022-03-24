@@ -1,7 +1,6 @@
 <mat-sidenav-container>
   <mat-sidenav [opened]="menuOpened" mode="side" class="menu-sidenav">
     <mat-nav-list>
-      <a mat-list-item [routerLink]="'/'"> Home </a>
       <a mat-list-item [routerLink]="'/shelters'"> Shelters </a>
       <a mat-list-item [routerLink]="'/persons'"> Persons </a>
       <a mat-list-item [routerLink]="'/contact'"> Contact </a>
@@ -9,6 +8,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="main-wrapper clearfix">
+      <app-breadcrumbs></app-breadcrumbs>
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
