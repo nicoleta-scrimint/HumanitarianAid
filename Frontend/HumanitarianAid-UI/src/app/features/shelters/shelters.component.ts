@@ -100,7 +100,6 @@ export class SheltersComponent implements OnInit {
         this.getShelters();
       },
       (error) => {
-        console.log(error);
         this.snackBar.open(error.error, '', {
           duration: 3000,
           horizontalPosition: 'right',
