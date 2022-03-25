@@ -1,6 +1,6 @@
 using Centric.HumanitarianAid.API.Data;
 using Centric.HumanitarianAid.API.Persons;
-using Centric.HumanitarianAid.API.Shelters;
+using HumanitarianAid.API.Shelters;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +35,8 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseCors(corsPolicyBuilder => corsPolicyBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
@@ -42,3 +44,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
