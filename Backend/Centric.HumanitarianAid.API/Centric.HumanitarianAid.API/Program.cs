@@ -35,6 +35,8 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseCors(corsPolicyBuilder => corsPolicyBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
@@ -42,3 +44,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+

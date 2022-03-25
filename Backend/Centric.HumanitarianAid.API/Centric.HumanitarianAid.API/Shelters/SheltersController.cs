@@ -24,16 +24,16 @@ namespace HumanitarianAid.API.Shelters
         public IActionResult Create([FromBody] CreateShelterDto sheltorDto)
         {
             var shelter = Shelter.CreateShelter(
-                sheltorDto.Name, 
-                sheltorDto.Address, 
-                sheltorDto.NumberOfPlaces, 
-                sheltorDto.OwnerName, 
-                sheltorDto.OwnerEmail, 
+                sheltorDto.Name,
+                sheltorDto.Address,
+                sheltorDto.NumberOfPlaces,
+                sheltorDto.OwnerName,
+                sheltorDto.OwnerEmail,
                 sheltorDto.OwnerPhone);
 
-            if (shelter.IsSuccess) 
+            if (shelter.IsSuccess)
             {
-                _shelterRepository.Add(shelter.Entity); 
+                _shelterRepository.Add(shelter.Entity);
 
                 var entity = shelter.Entity;
                 var shelterDto = new ShelterDto
@@ -95,6 +95,7 @@ namespace HumanitarianAid.API.Shelters
                     Name = x.Name,
                     Address = x.Address,
                     RemainingNumberOfPlaces = x.GetAvailableNumberOfPlaces(),
+                    NumberOfPlaces = x.NumberOfPlaces,
                     OwnerName = x.OwnerName,
                     OwnerEmail = x.OwnerEmail,
                     OwnerPhone = x.OwnerPhone,
