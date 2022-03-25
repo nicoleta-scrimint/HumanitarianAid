@@ -1,7 +1,13 @@
 <div class="title-container">
   <h1 class="title">Shelters overview</h1>
   <div class="title-buttons">
-    <button mat-raised-button color="primary">Register shelter</button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="openRegisterShelterPopup()"
+    >
+      Register shelter
+    </button>
     <button mat-raised-button color="accent">Register family</button>
   </div>
 </div>

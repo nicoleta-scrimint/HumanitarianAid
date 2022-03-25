@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 import { Shelter } from '../../shared';
 import { SheltersService } from './services';
+import { RegisterShelterPopupComponent } from './components/register-shelter-popup/register-shelter-popup.component';
 
 @Component({
   selector: 'app-shelters',
@@ -15,7 +17,14 @@ export class SheltersComponent implements OnInit {
 
   filterForm: FormGroup;
 
-  constructor(private readonly service: SheltersService) {}
+  constructor(
+    private readonly service: SheltersService,
+    public dialog: MatDialog
+  ) {}
+
+  openRegisterShelterPopup(): void {
+    this.dialog.open(RegisterShelterPopupComponent);
+  }
 
   ngOnInit(): void {
     this.buildFilterForm();

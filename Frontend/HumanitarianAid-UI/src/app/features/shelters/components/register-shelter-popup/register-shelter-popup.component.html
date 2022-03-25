@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>Register shelter</h2>
+<mat-dialog-content>
+  <form [formGroup]="registerSheterForm" (ngSubmit)="registerShelter()">
+    <div class="row">
+      <mat-form-field class="margin-right">
+        <input matInput placeholder="Name" formControlName="name" />
+      </mat-form-field>
+      <mat-form-field class="margin-right">
+        <input
+          matInput
+          type="number"
+          placeholder="Available places"
+          min="1"
+          formControlName="numberOfPlaces"
+        />
+      </mat-form-field>
+      <mat-form-field class="margin-right">
+        <input matInput placeholder="Address" formControlName="address" />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="margin-right">
+        <input matInput placeholder="Owner" formControlName="ownerName" />
+      </mat-form-field>
+      <mat-form-field class="margin-right">
+        <input
+          matInput
+          placeholder="Email"
+          type="email"
+          formControlName="ownerEmail"
+        />
+      </mat-form-field>
+      <mat-form-field class="margin-right">
+        <input
+          matInput
+          placeholder="Phone number"
+          type="tel"
+          formControlName="ownerPhone"
+        />
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-dialog-close mat-stroked-button color="primary">Cancel</button>
+  <button
+    mat-dialog-close
+    mat-raised-button
+    color="primary"
+    [disabled]="!registerSheterForm.valid"
+    (click)="registerShelter()"
+  >
+    Save
+  </button>
+</mat-dialog-actions>

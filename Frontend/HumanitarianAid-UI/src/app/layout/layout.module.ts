@@ -8,7 +8,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 
 import { HeaderComponent } from './header/header.component';
-import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { RouterModule } from '@angular/router';
 
@@ -17,23 +16,12 @@ const materialImports = [
   MatIconModule,
   MatButtonModule,
   MatSidenavModule,
-  MatListModule
-]
+  MatListModule,
+];
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    BreadcrumbsComponent,
-    SidemenuComponent
-  ],
-  imports: [
-    CommonModule,
-    materialImports,
-    RouterModule
-  ],
-  exports: [
-    HeaderComponent,
-    SidemenuComponent
-  ]
+  declarations: [HeaderComponent, SidemenuComponent],
+  imports: [CommonModule, RouterModule, materialImports],
+  exports: [HeaderComponent, SidemenuComponent],
 })
-export class LayoutModule { }
+export class LayoutModule {}
