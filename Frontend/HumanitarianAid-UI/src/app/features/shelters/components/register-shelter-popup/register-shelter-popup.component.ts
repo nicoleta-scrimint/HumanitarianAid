@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Shelter } from 'src/app/shared';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
+import { Shelter } from '../../../../shared';
+import { SheltersService } from '../../services';
 
 @Component({
   selector: 'app-register-shelter-popup',
@@ -10,13 +13,16 @@ import { Shelter } from 'src/app/shared';
 export class RegisterShelterPopupComponent implements OnInit {
   registerSheterForm: FormGroup;
 
-  constructor() {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: string,
+    private dialogRef: MatDialogRef<RegisterShelterPopupComponent>
+  ) {}
 
   ngOnInit(): void {
     this.buildRegisterSheterForm();
   }
 
-  registerShelter() {
+  registerShelter(): void {
     let shelter = {
       name: this.registerSheterForm.get('name').value,
       numberOfPlaces: this.registerSheterForm.get('numberOfPlaces').value,
@@ -26,7 +32,7 @@ export class RegisterShelterPopupComponent implements OnInit {
       ownerPhone: this.registerSheterForm.get('ownerPhone').value,
     } as Shelter;
 
-    console.table(shelter);
+    this.dialogRef.close({ data: shelter });
   }
 
   private buildRegisterSheterForm(): void {

@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
+import { Shelter } from '../../../shared';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -20,5 +22,20 @@ export class SheltersService {
         }
       )
     );
+  }
+
+  registerShelters(shelter: Shelter) {
+    return this.http
+      .post(environment.sheltersApiUrl + '/Shelters', shelter)
+      .pipe(
+        map(
+          (result: any) => {
+            return result;
+          },
+          (error: any) => {
+            return error;
+          }
+        )
+      );
   }
 }

@@ -23,7 +23,12 @@ export class SheltersComponent implements OnInit {
   ) {}
 
   openRegisterShelterPopup(): void {
-    this.dialog.open(RegisterShelterPopupComponent);
+    let dialogRef = this.dialog.open(RegisterShelterPopupComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.data) {
+        this.registerShelter(result.data);
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -66,9 +71,16 @@ export class SheltersComponent implements OnInit {
       shelter.name.toLowerCase().includes(shelterName.toLowerCase())
     );
   }
+
   private filterSheltersByAvailablePlaces(availablePlaces: number): void {
     this.filteredShelters = this.shelters.filter(
       (shelter) => shelter.numberOfPlaces >= availablePlaces
     );
+  }
+
+  private registerShelter(shelter: Shelter): void {
+    this.service.registerShelters(shelter).subscribe(() => {
+      this.getShelters();
+    });
   }
 }
