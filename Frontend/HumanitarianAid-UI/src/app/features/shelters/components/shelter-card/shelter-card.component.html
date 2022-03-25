@@ -1,1 +1,26 @@
-<p>shelter-card works!</p>
+<div class="shelter-card">
+  <div class="shelter-card-header">
+    <div class="shelter-card-title">{{ shelter.name }}</div>
+    <div class="shelter-card-subtitle">{{ shelter.address }}</div>
+  </div>
+  <div class="shelter-card-image">
+    <img src="/assets/images/shelter-image.png" />
+  </div>
+  <div class="shelter-card-body">
+    <div class="contact-details">
+      <p class="info-text">Contact person</p>
+      <p class="no-margin">{{ shelter.ownerName }}</p>
+      <p class="no-margin">{{ shelter.ownerEmail }}</p>
+      <p class="no-margin">{{ shelter.ownerPhone }}</p>
+    </div>
+    <div class="available-places">
+      <p class="info-text">Available places</p>
+      <p class="no-margin">
+        {{ shelter.remainingNumberOfPlaces }} of {{ shelter.numberOfPlaces }}
+      </p>
+    </div>
+  </div>
+  <div class="shelter-card-footer">
+    <button mat-raised-button color="primary">Register family</button>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+.shelter-card {
+  background-color: white;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+
+  .shelter-card-header {
+    padding: 15px 15px 0 15px;
+
+    .shelter-card-title {
+      font-size: 24px;
+      margin: 5px 0px;
+      font-weight: 700;
+    }
+    .shelter-card-subtitle {
+      font-size: 14px;
+      margin: 5px 0px;
+    }
+  }
+
+  .shelter-card-image img {
+    width: 100%;
+  }
+
+  .shelter-card-body {
+    padding: 0px 15px 15px 15px;
+    display: flex;
+    justify-content: space-between;
+
+    .info-text {
+      color: #41586f;
+    }
+
+    .no-margin {
+      margin: 0;
+    }
+  }
+
+  .shelter-card-footer {
+    padding: 0px 15px 15px 15px;
+  }
+}
