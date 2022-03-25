@@ -8,3 +8,13 @@ body {
   margin: 0;
   font-family: "Open sans", "Helvetica Neue", sans-serif;
 }
+
+.success-snackbar {
+  color: white;
+  background-color: #1baa55;
+}
+
+.error-snackbar {
+  color: white;
+  background-color: #db3b21;
+}

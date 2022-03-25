@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { SheltersComponent } from './shelters/shelters.component';
@@ -20,6 +21,7 @@ const materialImports = [
   MatButtonModule,
   MatIconModule,
   MatInputModule,
+  MatSnackBarModule,
   MatDialogModule,
 ];
 

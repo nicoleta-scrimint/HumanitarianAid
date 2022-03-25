@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Shelter } from '../../shared';
 import { SheltersService } from './services';
@@ -19,6 +20,7 @@ export class SheltersComponent implements OnInit {
 
   constructor(
     private readonly service: SheltersService,
+    private readonly snackBar: MatSnackBar,
     public dialog: MatDialog
   ) {}
 
@@ -60,8 +62,12 @@ export class SheltersComponent implements OnInit {
         this.filteredShelters = this.shelters;
       },
       (error) => {
-        //TODO add toaster
-        console.log('Error ' + error);
+        this.snackBar.open(error.message, '', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['error-snackbar'],
+        });
       }
     );
   }
@@ -80,12 +86,27 @@ export class SheltersComponent implements OnInit {
 
   private registerShelter(shelter: Shelter): void {
     this.service.registerShelters(shelter).subscribe(
-      () => {
+      (data) => {
+        this.snackBar.open(
+          'The shelter ' + data.name + ' was successfully added!',
+          '',
+          {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['success-snackbar'],
+          }
+        );
         this.getShelters();
       },
       (error) => {
-        //TODO add toaster
-        console.log('Error ' + error);
+        console.log(error);
+        this.snackBar.open(error.error, '', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['error-snackbar'],
+        });
       }
     );
   }
