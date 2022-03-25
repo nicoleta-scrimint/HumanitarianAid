@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { SheltersComponent } from './shelters/shelters.component';
 import { PersonsComponent } from './persons/persons.component';
@@ -19,7 +19,7 @@ const materialImports = [
   MatButtonModule,
   MatIconModule,
   MatInputModule,
-  MatSlideToggleModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({

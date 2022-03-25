@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Shelter } from '../../shared';
 import { SheltersService } from './services';
@@ -15,7 +16,10 @@ export class SheltersComponent implements OnInit {
 
   filterForm: FormGroup;
 
-  constructor(private readonly service: SheltersService) {}
+  constructor(
+    private readonly service: SheltersService,
+    private readonly snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.buildFilterForm();
@@ -46,8 +50,12 @@ export class SheltersComponent implements OnInit {
         this.filteredShelters = this.shelters;
       },
       (error) => {
-        //TODO add toaster
-        console.log('Error ' + error);
+        this.snackBar.open(error.message, '', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['error-snackbar'],
+        });
       }
     );
   }
