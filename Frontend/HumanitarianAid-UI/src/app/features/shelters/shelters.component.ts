@@ -79,8 +79,14 @@ export class SheltersComponent implements OnInit {
   }
 
   private registerShelter(shelter: Shelter): void {
-    this.service.registerShelters(shelter).subscribe(() => {
-      this.getShelters();
-    });
+    this.service.registerShelters(shelter).subscribe(
+      () => {
+        this.getShelters();
+      },
+      (error) => {
+        //TODO add toaster
+        console.log('Error ' + error);
+      }
+    );
   }
 }
