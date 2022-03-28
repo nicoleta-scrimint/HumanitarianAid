@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { RegisterFamilyPopupComponent } from 'src/app/shared/components/register-family-popup/register-family-popup.component';
 import { Shelter } from '../../shared';
 import { SheltersService } from './services';
 import { RegisterShelterPopupComponent } from './components/register-shelter-popup/register-shelter-popup.component';
@@ -26,6 +27,17 @@ export class SheltersComponent implements OnInit {
 
   openRegisterShelterPopup(): void {
     let dialogRef = this.dialog.open(RegisterShelterPopupComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.data) {
+        this.registerShelter(result.data);
+      }
+    });
+  }
+
+  openRegisterFamilyPopup(): void {
+    let dialogRef = this.dialog.open(RegisterFamilyPopupComponent, {
+      data: { availableShelters: this.shelters },
+    });
     dialogRef.afterClosed().subscribe((result) => {
       if (result.data) {
         this.registerShelter(result.data);

@@ -8,7 +8,11 @@
     >
       Register shelter
     </button>
-    <button mat-raised-button color="accent">Register family</button>
+    <button 
+      mat-raised-button
+      color="accent"
+      (click)="openRegisterFamilyPopup()"  
+    >Register family</button>
   </div>
 </div>
 <div class="filter-container">
