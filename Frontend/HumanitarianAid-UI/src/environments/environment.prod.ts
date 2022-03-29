@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  sheltersApiUrl: 'https://localhost:7254/api'
 };
