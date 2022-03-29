@@ -1,15 +1,11 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using Centric.HumanitarianAid.API.Data;
 using Centric.HumanitarianAid.API.Persons;
-using Centric.HumanitarianAid.API.Shelters;
 using Centric.HumanitarianAid.Business;
 using FluentAssertions;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
+using HumanitarianAid.API.Shelters;
 using Xunit;
 
 namespace Centric.HumanitarianAid.API.IntegrationTests

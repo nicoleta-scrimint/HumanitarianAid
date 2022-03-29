@@ -73,5 +73,22 @@
         {
             return NumberOfPlaces - Persons.Count;
         }
+
+        public Result<Shelter> UpdateShelter(string name, string address, int numberOfPlaces, string ownerName, string ownerEmail, string ownerPhone)
+        {
+            if (numberOfPlaces <= 0)
+            {
+                return Result<Shelter>.Failure("The number of places for the shelter needs to be greater than 0.");
+            }
+
+            this.Name = name;
+            this.Address = address;
+            this.NumberOfPlaces = numberOfPlaces;
+            this.OwnerName = ownerName;
+            this.OwnerEmail = ownerEmail;
+            this.OwnerPhone = ownerPhone;
+
+            return Result<Shelter>.Success(this);
+        }
     }
 }
