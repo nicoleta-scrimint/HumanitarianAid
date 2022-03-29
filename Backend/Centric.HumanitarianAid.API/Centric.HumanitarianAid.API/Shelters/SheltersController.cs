@@ -1,9 +1,9 @@
-namespace Centric.HumanitarianAid.API.Shelters
-{
-    using Business;
-    using Persons;
-    using Microsoft.AspNetCore.Mvc;
+using Centric.HumanitarianAid.API.Persons;
+using Centric.HumanitarianAid.Business;
+using Microsoft.AspNetCore.Mvc;
 
+namespace HumanitarianAid.API.Shelters
+{
     [ApiController]
     [Route("api/[controller]")]
     public class SheltersController : ControllerBase
@@ -24,16 +24,16 @@ namespace Centric.HumanitarianAid.API.Shelters
         public IActionResult Create([FromBody] CreateShelterDto sheltorDto)
         {
             var shelter = Shelter.CreateShelter(
-                sheltorDto.Name, 
-                sheltorDto.Address, 
-                sheltorDto.NumberOfPlaces, 
-                sheltorDto.OwnerName, 
-                sheltorDto.OwnerEmail, 
+                sheltorDto.Name,
+                sheltorDto.Address,
+                sheltorDto.NumberOfPlaces,
+                sheltorDto.OwnerName,
+                sheltorDto.OwnerEmail,
                 sheltorDto.OwnerPhone);
 
-            if (shelter.IsSuccess) 
+            if (shelter.IsSuccess)
             {
-                _shelterRepository.Add(shelter.Entity); 
+                _shelterRepository.Add(shelter.Entity);
 
                 var entity = shelter.Entity;
                 var shelterDto = new ShelterDto
@@ -95,6 +95,7 @@ namespace Centric.HumanitarianAid.API.Shelters
                     Name = x.Name,
                     Address = x.Address,
                     RemainingNumberOfPlaces = x.GetAvailableNumberOfPlaces(),
+                    NumberOfPlaces = x.NumberOfPlaces,
                     OwnerName = x.OwnerName,
                     OwnerEmail = x.OwnerEmail,
                     OwnerPhone = x.OwnerPhone,
@@ -102,6 +103,61 @@ namespace Centric.HumanitarianAid.API.Shelters
                 });
 
             return Ok(shelters);
+        }
+
+        [HttpGet("shelterId:guid")]
+        public IActionResult GetById(Guid shelterId)
+        {
+            var shelter = _shelterRepository.GetById(shelterId);
+
+            if (shelter == null)
+            {
+                return NotFound($"Shelter with id {shelterId} not found.");
+            }
+
+            return Ok(shelter);
+        }
+
+        [HttpDelete("shelterId")]
+        public IActionResult Delete(Guid shelterId)
+        {
+            var shelter = _shelterRepository.GetById(shelterId);
+            if (shelter == null)
+            {
+                return NotFound($"Shelter with id {shelterId} not found.");
+            }
+
+            _shelterRepository.Delete(shelter);
+
+            return NoContent();
+        }
+
+        [HttpPut("shelterId")]
+        public IActionResult Update(Guid shelterId, [FromBody] UpdateShelterDto shelterDto)
+        {
+            var shelter = _shelterRepository.GetById(shelterId);
+
+            if (shelter == null)
+            {
+                return NotFound($"Shelter with id {shelterId} not found.");
+            }
+
+            var result = shelter.UpdateShelter(
+                shelterDto.Name, 
+                shelterDto.Address, 
+                shelterDto.NumberOfPlaces, 
+                shelterDto.OwnerName, 
+                shelterDto.OwnerEmail, 
+                shelterDto.OwnerPhone);
+
+            if (result.IsFailure)
+            {
+                return BadRequest(result.Error);
+            }
+
+            _shelterRepository.Update(result.Entity);
+
+            return NoContent();
         }
     }
 }
