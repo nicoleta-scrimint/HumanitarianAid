@@ -1,6 +1,6 @@
 ﻿namespace HumanitarianAid.API.Shelters
 {
-	public class CreateShelterDto
+	public class UpdateShelterDto
 	{
         public string Name { get; set; }
 

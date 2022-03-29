@@ -16,7 +16,7 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var appleShelter = Shelter.CreateShelter(
+	        var appleShelter = Shelter.CreateShelter(
                     "Apple", "Apple Avenue", 100, "Mr. Apple", "apple@apple.com", "0712345678"
                 )
                 .Entity;
