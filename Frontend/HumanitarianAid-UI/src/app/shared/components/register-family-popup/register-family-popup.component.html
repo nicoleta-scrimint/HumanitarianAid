@@ -1,77 +1,88 @@
 <h2 mat-dialog-title>Register Family</h2>
 <div mat-dialog-content>
-  <form class="add-persons-form" [formGroup]="myForm">
+  <form class="add-family-form" [formGroup]="registerFamilyForm">
     <div class="shelter-selection-wrapper">
-      <mat-form-field>
+      <mat-form-field class="shelter-select">
         <mat-label>Select Shelter*</mat-label>
         <mat-select formControlName="shelter">
-          <mat-option *ngFor="let shelter of data.availableShelters" [value]="shelter.id">
-            {{ shelter.name }} - {{ shelter.remainingNumberOfPlaces}}/{{shelter.numberOfPlaces}} available
+          <mat-option
+            *ngFor="let shelter of data.availableShelters"
+            [value]="shelter.id"
+          >
+            {{ shelter.name }} - {{ shelter.remainingNumberOfPlaces }}/{{
+              shelter.numberOfPlaces
+            }}
+            available
           </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <ng-container formArrayName="persons">
-      <ng-container *ngFor="let personForm of persons.controls; let i = index">
-        <mat-card class="example-card">
-          <mat-card-header>
-            <mat-card-title>Person {{ i + 1 }}</mat-card-title>
-            <button mat-button color="primary" (click)="deletePerson(i)">
+      <div class="persons-wrapper">
+        <ng-container
+          *ngFor="let personForm of persons.controls; let i = index"
+        >
+          <mat-card class="person-card">
+            <mat-card-header class="person-card-header">
+              <mat-card-title class="person-card-title">Person {{ i + 1 }}</mat-card-title>
+              <button mat-button *ngIf="persons.length > 1" (click)="deletePerson(i)" color="primary">
                 <mat-icon>person_remove</mat-icon>
                 Remove person
-            </button>
-            <mat-icon class="delete-btn" (click)="deletePerson(i)"></mat-icon>
-          </mat-card-header>
-          <mat-card-content>
-            <div class="lesson-form-row" [formGroup]="personForm">
-              <mat-form-field>
-                <input matInput formControlName="name" placeholder="Name*" />
-              </mat-form-field>
-              <mat-form-field>
-                <input
-                  matInput
-                  formControlName="surname"
-                  placeholder="Surname*"
-                />
-              </mat-form-field>
-              <mat-form-field>
-                <input
-                  matInput
-                  formControlName="age"
-                  placeholder="Age*"
-                  type="number"
-                  min="0"
-                />
-              </mat-form-field>
-              <div>
-                <label id="example-radio-group-label">Gender*</label>
-                <mat-radio-group
-                  formControlName="gender"
-                  aria-label="Gender"
-                  color="primary"
-                >
-                  <mat-radio-button value="male">Male</mat-radio-button>
-                  <mat-radio-button value="female">Female</mat-radio-button>
-                  <mat-radio-button value="other">Other</mat-radio-button>
-                </mat-radio-group>
+              </button>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="person-form-row" [formGroup]="personForm">
+                <mat-form-field>
+                  <input matInput formControlName="name" placeholder="Name*" />
+                </mat-form-field>
+                <mat-form-field>
+                  <input
+                    matInput
+                    formControlName="surname"
+                    placeholder="Surname*"
+                  />
+                </mat-form-field>
+                <mat-form-field>
+                  <input
+                    matInput
+                    formControlName="age"
+                    placeholder="Age*"
+                    type="number"
+                    min="0"
+                  />
+                </mat-form-field>
+                <div class="gender-wrapper">
+                  <label>Gender*</label>
+                  <mat-radio-group
+                    formControlName="gender"
+                    aria-label="Gender"
+                    color="primary"
+                  >
+                    <mat-radio-button value="male">Male</mat-radio-button>
+                    <mat-radio-button value="female">Female</mat-radio-button>
+                    <mat-radio-button value="other">Other</mat-radio-button>
+                  </mat-radio-group>
+                </div>
               </div>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </ng-container>
+            </mat-card-content>
+          </mat-card>
+        </ng-container>
+      </div>
     </ng-container>
-
-    <button mat-button color="primary" (click)="addPerson()">
-        <mat-icon class="add-course-btn">person_add</mat-icon>
-        Add new person
-    </button>
   </form>
+  <div class="add-person-wrapper">
+    <button mat-button [disabled]="persons.length === selectedShelter?.remainingNumberOfPlaces" (click)="addPerson()" color="primary" >
+      <mat-icon class="add-course-btn">person_add</mat-icon>
+      Add new person
+    </button>
+  </div>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="popup-footer">
   <button mat-dialog-close mat-stroked-button color="primary">Cancel</button>
   <button
     mat-dialog-close
     mat-raised-button
+    [disabled]="!registerFamilyForm.valid"
     color="primary"
     (click)="registerFamily()"
   >

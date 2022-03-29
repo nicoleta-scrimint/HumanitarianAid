@@ -1,0 +1,51 @@
+.shelter-selection-wrapper {
+    text-align: center;
+    padding-bottom: 16px;
+
+    .shelter-select {
+        min-width: 60%;
+    }
+}
+
+.persons-wrapper {
+    padding: 0 8px;
+
+    .person-card:not(:last-of-type) {
+        margin-bottom: 32px;
+    }
+
+    .person-card-header {
+        justify-content: space-between;
+    }
+
+    .person-form-row {
+        position: relative;
+
+        .mat-form-field {
+            padding-right: 16px;
+        }
+
+        .gender-wrapper {
+            height: 100%;
+            display: inline-block;
+
+            label {
+                position: absolute;
+                top: -6px;
+            }
+
+            .mat-radio-button:not(:last-of-type) {
+                padding-right: 16px;
+            }
+        }
+    }
+}
+
+.add-person-wrapper {
+    padding: 32px 0 16px 0;
+    text-align: center;
+}
+
+.popup-footer {
+    justify-content: center;
+}

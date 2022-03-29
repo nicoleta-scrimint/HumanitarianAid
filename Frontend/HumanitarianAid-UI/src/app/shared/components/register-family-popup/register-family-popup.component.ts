@@ -11,7 +11,7 @@ import { RegisterFamilyData, Shelter } from '../../models';
 })
 export class RegisterFamilyPopupComponent implements OnInit {
 
-  myForm: FormGroup = new FormGroup({
+  registerFamilyForm: FormGroup = new FormGroup({
     shelter: new FormControl('', Validators.required),
     persons: new FormArray([])
   });
@@ -25,8 +25,13 @@ export class RegisterFamilyPopupComponent implements OnInit {
     this.addPerson();
   }
 
-  get persons() {
-    return this.myForm.controls["persons"] as FormArray;
+  get persons(): FormArray {
+    return this.registerFamilyForm.controls["persons"] as FormArray;
+  }
+
+  get selectedShelter(): Shelter {
+    let selectedShelterId = this.registerFamilyForm.get("shelter").value;
+    return this.data.availableShelters.find(shelter => shelter.id === selectedShelterId);
   }
 
   addPerson(): void {
@@ -44,6 +49,6 @@ export class RegisterFamilyPopupComponent implements OnInit {
   }
 
   registerFamily(): void {
-    console.log(this.myForm);
+    console.log(this.registerFamilyForm);
   }
 }
