@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   sheltersApiUrl: 'https://localhost:7254/api',
+  // sheltersApiUrl: 'http://localhost:5254/api'
 };
 
 /*

@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { Shelter } from '../../../../shared';
-import { SheltersService } from '../../services';
 
 @Component({
   selector: 'app-register-shelter-popup',
