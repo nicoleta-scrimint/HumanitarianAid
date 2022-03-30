@@ -39,7 +39,9 @@ export class SheltersComponent implements OnInit {
       data: { availableShelters: this.shelters },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
+      if(result.success) {
+        this.getShelters();
+      }
     });
   }
 

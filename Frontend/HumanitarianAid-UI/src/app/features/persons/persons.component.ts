@@ -2,9 +2,9 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
-import { Person } from 'src/app/shared';
 
-import { PersonsService } from './services';
+import { Person } from 'src/app/shared';
+import { PersonsService } from 'src/app/shared';
 
 @Component({
   selector: 'app-persons',

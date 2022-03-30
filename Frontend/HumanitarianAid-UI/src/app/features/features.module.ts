@@ -12,13 +12,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 
+import { PersonsService } from 'src/app/shared';
 import { ContactComponent } from './contact/contact.component';
 import { ShelterCardComponent } from './shelters/components/shelter-card/shelter-card.component';
 import { RegisterShelterPopupComponent } from './shelters/components/register-shelter-popup/register-shelter-popup.component';
 import { SheltersComponent } from './shelters/shelters.component';
 import { SheltersService } from './shelters/services';
 import { PersonsComponent } from './persons/persons.component';
-import { PersonsService } from './persons/services';
 
 const materialImports = [
   MatButtonModule,
