@@ -3,10 +3,16 @@
   <form [formGroup]="registerSheterForm">
     <div class="row">
       <mat-form-field class="margin-right">
-        <input matInput placeholder="Name" formControlName="name" />
+        <input
+          class="shelter-register-name"
+          matInput
+          placeholder="Name"
+          formControlName="name"
+        />
       </mat-form-field>
       <mat-form-field class="margin-right">
         <input
+          class="shelter-register-available-places"
           matInput
           type="number"
           placeholder="Available places"
@@ -15,15 +21,26 @@
         />
       </mat-form-field>
       <mat-form-field class="margin-right">
-        <input matInput placeholder="Address" formControlName="address" />
+        <input
+          id="shelter-register-address"
+          matInput
+          placeholder="Address"
+          formControlName="address"
+        />
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field class="margin-right">
-        <input matInput placeholder="Owner" formControlName="ownerName" />
+        <input
+          id="shelter-register-owner-name"
+          matInput
+          placeholder="Owner"
+          formControlName="ownerName"
+        />
       </mat-form-field>
       <mat-form-field class="margin-right">
         <input
+          class="shelter-register-owner-email"
           matInput
           placeholder="Email"
           type="email"
@@ -32,6 +49,7 @@
       </mat-form-field>
       <mat-form-field class="margin-right">
         <input
+          class="shelter-register-owner-number"
           matInput
           placeholder="Phone number"
           type="tel"
@@ -44,6 +62,7 @@
 <mat-dialog-actions align="center">
   <button mat-dialog-close mat-stroked-button color="primary">Cancel</button>
   <button
+    class="shelter-register-save"
     mat-dialog-close
     mat-raised-button
     color="primary"
